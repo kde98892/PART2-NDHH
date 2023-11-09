@@ -58,7 +58,21 @@ const Container = styled.input`
     color: var(--Gray4);
   }
 
-  ${({ $error }) => $error && `border: 0.1rem solid var(--Error);`}
+  ${({ $error }) =>
+    $error &&
+    `
+    border: 0.1rem solid var(--Error);
+    
+    &:hover {
+      outline: 0.1rem solid var(--Error);
+    }
+    &:focus {
+      outline: 0.2rem solid var(--Error);
+    }
+    &:active {
+      outline: 0.2rem solid var(--Error);
+    }
+  `}
 `;
 
 const ErrorMessage = styled.div`

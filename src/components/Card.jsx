@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import propTypes from "prop-types";
 import Badge from "@/components/commons/Badge";
+import Button from "@/components/commons/Button";
 import { formatDate } from "@/utils/formatDate";
 import { FONT12, FONT18, FONT20, FONT20B } from "@/styles/FontStyles";
 import { DeviceSize } from "@/styles/DeviceSize";
 import defaultImg from "@/assets/default_profile.svg";
-import deleteIcon from "@/assets/trash_icon.svg";
-import plusIcon from "@/assets/plus_icon.svg";
 
 /**
  * @param {*} data 메세지 데이터 객체
@@ -19,7 +18,9 @@ function Card({ type, data = null }) {
   if (type === "Plus") {
     return (
       <Container>
-        <PlusIcon src={plusIcon} alt="추가하기 버튼" />
+        <PlusIcon>
+          <Button type="plus" />
+        </PlusIcon>
       </Container>
     );
   }
@@ -37,7 +38,11 @@ function Card({ type, data = null }) {
           <Badge>{relationship}</Badge>
         </Wrapper>
       </Profile>
-      {type === "Edit" && <DeleteIcon src={deleteIcon} alt="삭제하기 버튼" />}
+      {type === "Edit" && (
+        <DeleteIcon>
+          <Button type="trash" />
+        </DeleteIcon>
+      )}
       <Content $font={font}>{content}</Content>
       <Date>{formatDate(createdAt)}</Date>
     </Container>
@@ -110,17 +115,13 @@ const Bold = styled.span`
   line-height: 120%;
 `;
 
-const DeleteIcon = styled.img`
+const DeleteIcon = styled.div`
   width: 4rem;
   height: 4rem;
 
   position: absolute;
   top: 2.8rem;
   right: 2.4rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const Content = styled.div`
@@ -147,11 +148,7 @@ const Date = styled.div`
   letter-spacing: -0.006rem;
 `;
 
-const PlusIcon = styled.img`
+const PlusIcon = styled.div`
   width: 5.6rem;
   height: 5.6rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;

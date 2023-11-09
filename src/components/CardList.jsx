@@ -3,8 +3,9 @@ import propTypes from "prop-types";
 import Badge from "@/components/commons/Badge";
 import ProfileImgList from "@/components/commons/ProfileImgList";
 import { DeviceSize } from "@/styles/DeviceSize";
-import { FONT16, FONT16B, FONT18B, FONT14, FONT14B, FONT24B } from "../styles/FontStyles";
+import { FONT16, FONT16B, FONT18B, FONT14, FONT14B, FONT24B } from "@/styles/FontStyles";
 import { COLOR } from "@/styles/ColorStyles";
+import { Z_INDEX } from "@/styles/ZindexStyles";
 import patternPurple from "@/assets/pattern_purple.svg";
 import patternOrange from "@/assets/pattern_orange.svg";
 import patternBlue from "@/assets/pattern_blue.svg";
@@ -120,7 +121,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 1.2rem;
 
-  z-index: 1;
+  z-index: ${Z_INDEX.cardList_Wrapper};
 `;
 
 const Name = styled.div`
@@ -162,7 +163,7 @@ const BadgeWrapper = styled.div`
   display: flex;
   gap: 0.8rem;
 
-  z-index: 1;
+  z-index: ${Z_INDEX.cardList_Wrapper};
 
   border-top: 0.1rem solid rgba(0, 0, 0, 0.12);
 

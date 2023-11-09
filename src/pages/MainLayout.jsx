@@ -1,13 +1,15 @@
-import { Outlet } from "react-router"
+import { Outlet } from "react-router";
+import Header from "@/components/Header";
 
 function MainLayout() {
   return (
     <>
-      <nav></nav>
-      <div><Outlet /></div>
-      <button></button>
+      <Header />
+      <div>
+        <Outlet />
+      </div>
     </>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;

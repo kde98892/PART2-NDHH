@@ -5,12 +5,15 @@ import { FONT16 } from "@/styles/FontStyles";
 import arrowUp from "@/assets/arrow_top.svg";
 import arrowDown from "@/assets/arrow_down.svg";
 
+const RELATIONSHIP = ["지인", "가족", "친구", "애인", "동료"];
+
 Dropdown.propTypes = {
   disabled: PropTypes.bool,
 };
 
 function Dropdown({ disabled }) {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("지인");
   const [arrowDirection, setArrowDirection] = useState(arrowDown);
 
   const toggleDropdown = () => {
@@ -18,15 +21,24 @@ function Dropdown({ disabled }) {
     setArrowDirection(showDropdown ? arrowDown : arrowUp);
   };
 
+  const handleSelect = (value) => {
+    setSelectedValue(value); // 선택된 값을 설정하면
+    setShowDropdown(false); // 드롭다운을 닫음
+    setArrowDirection(arrowDown); // 화살표 방향을 원래대로 변경
+  };
+
   return (
     <Container onClick={toggleDropdown} disabled={disabled}>
       {/* children으로 받아올 예정 */}
-      Placeholder
+      {selectedValue}
       <ArrowImg src={arrowDirection} alt="클릭해서 옵션 선택하기" />
       <List $show={showDropdown}>
         {/* children으로 받아올 예정 */}
-        <Text>TextTextText</Text>
-        <Text>TextTextText</Text>
+        {RELATIONSHIP.map((relationship, idx) => (
+          <Text key={idx} onClick={() => handleSelect(relationship)}>
+            {relationship}
+          </Text>
+        ))}
       </List>
     </Container>
   );

@@ -101,4 +101,6 @@ const IconSmall = styled.img`
 const IconLarge = styled.img`
   width: 4rem;
   height: 4rem;
+
+  filter: drop-shadow(0 0.4rem 0.8rem rgba(0, 0, 0, 0.08));
 `;

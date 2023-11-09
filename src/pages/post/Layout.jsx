@@ -3,17 +3,18 @@ import propTypes from "prop-types";
 import Card from "@/components/Card";
 import Button from "@/components/commons/Button";
 import useGetWindowWidth from "@/hooks/useGetWindowWidth";
-import { DeviceSize } from "@/styles/DeviceSize";
+import { DeviceSize, DeviceSizeNum } from "@/styles/DeviceSize";
 import { RECIPIENT1, RECIPIENT2 } from "@/constants/test";
 import { sortNew } from "@/utils/sort";
 import { COLOR } from "@/styles/ColorStyles";
+import { Z_INDEX } from "@/styles/ZindexStyles";
 
 Layout.propTypes = {
   path: propTypes.oneOf(["edit", ""]),
 };
 
 function Layout({ path = "" }) {
-  const { backgroundColor, backgroundImageURL, messageCount, recentMessages } = RECIPIENT1;
+  const { backgroundColor, backgroundImageURL, messageCount, recentMessages } = RECIPIENT2;
   const sortedData = sortNew(recentMessages);
 
   return (
@@ -33,8 +34,8 @@ function Btn({ path }) {
   return (
     <>
       {path === "edit" ? (
-        <DeleteWrapper>
-          {windowWidth > 1024 ? (
+        <SaveWrapper>
+          {windowWidth > DeviceSizeNum.tablet ? (
             <Button type="primary" height="l" width="100">
               저장하기
             </Button>
@@ -43,7 +44,7 @@ function Btn({ path }) {
               저장하기
             </Button>
           )}
-        </DeleteWrapper>
+        </SaveWrapper>
       ) : (
         <EditWrapper>
           <Button type="outlined" height="l" width="100">
@@ -111,7 +112,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  @media (max-width: ${DeviceSize.pc}) {
+  @media (max-width: 1248px) {
     width: 100%;
     padding: 6.3rem 2.4rem 0;
   }
@@ -123,6 +124,8 @@ const Container = styled.div`
 `;
 
 const CardWrapper = styled.div`
+  width: 100%;
+
   display: grid;
   grid-template-columns: repeat(3, minmax(32rem, 38.4rem));
   justify-content: space-between;
@@ -140,13 +143,13 @@ const CardWrapper = styled.div`
   }
 `;
 
-const DeleteWrapper = styled.div`
+const SaveWrapper = styled.div`
   width: 10rem;
   padding-bottom: 1.1rem;
 
   position: relative;
 
-  z-index: 10;
+  z-index: ${Z_INDEX.postLayout_SaveWrapper};
 
   @media (max-width: ${DeviceSize.tablet}) {
     width: calc(100% - 4.8rem);
@@ -169,7 +172,7 @@ const EditWrapper = styled.div`
 
   position: relative;
 
-  z-index: 1;
+  z-index: ${Z_INDEX.postLayout_EditWrapper};
 
   @media (max-width: ${DeviceSize.tablet}) {
     padding-bottom: 1.4rem;

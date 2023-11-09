@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { FONT12 } from "@/styles/FontStyles";
+import { Z_INDEX } from "@/styles/ZindexStyles";
 
 /**
  * @param {*} data recentMessages 배열
@@ -14,9 +15,9 @@ function ProfileImgList({ messageCount, data }) {
 
   return (
     <Container>
-      {data[0] && <Img order="1" src={data[0].profileImageURL} />}
-      {data[1] && <Img order="2" src={data[1].profileImageURL} />}
-      {data[2] && <Img order="3" src={data[2].profileImageURL} />}
+      {data[0] && <Img order={Z_INDEX.profileImgList_Img[0]} src={data[0].profileImageURL} />}
+      {data[1] && <Img order={Z_INDEX.profileImgList_Img[1]} src={data[1].profileImageURL} />}
+      {data[2] && <Img order={Z_INDEX.profileImgList_Img[2]} src={data[2].profileImageURL} />}
       {rest > 0 && <Rest>+{rest <= 999 ? rest : "999"}</Rest>}
     </Container>
   );
@@ -58,7 +59,7 @@ const Rest = styled.div`
   position: absolute;
   left: 5.1rem;
 
-  z-index: 4;
+  z-index: ${Z_INDEX.profileImgList_Rest};
 
   display: flex;
   align-items: center;

@@ -65,12 +65,12 @@ function SelectOption({ value, setValue }) {
   return (
     <>
       <ToggleButton handleToggle={setSelectedType} selected={selectedType} />
-      <Options selectedType={selectedType} setValue={setValue} />
+      <Options selectedType={selectedType} value={value} setValue={setValue} />
     </>
   );
 }
 
-function Options({ selectedType, setValue }) {
+function Options({ selectedType, value, setValue }) {
   const [imgs, setImgs] = useState(DefaultBG);
   const [orderColor, setOrderColor] = useState(0);
   const [orderImg, setOrederImg] = useState("");
@@ -93,7 +93,7 @@ function Options({ selectedType, setValue }) {
       {isColor && Object.values(COLOR).map((color, idx) => <Option key={idx} color={color} check={orderColor === idx} onClick={handleOptionClick(idx, color)} />)}
       {isColor || (
         <>
-          <Option setValue={setValue} setImgs={setImgs} setSelected={setOrederImg} />
+          <Option value={value} setValue={setValue} setImgs={setImgs} setSelected={setOrederImg} />
           {imgs.map((img, idx) => (
             <Option key={idx} check={orderImg === idx} img={img} onClick={handleOptionClick(idx, img)} />
           ))}

@@ -15,10 +15,12 @@ function usePostData(value) {
       if (!value.content) {
         throw new Error("당신의 마음을 적는 걸 깜빡하셨어요.");
       }
+      console.log(makeMessage(value));
 
-      const res = await api("RECIPIENTS_MESSAGES", "POST", id, makeMessage(value));
-      if (res) {
-        navigate(`/post/${id}`);
+      const { recipientId } = await api("RECIPIENTS_MESSAGES", "POST", id, makeMessage(value));
+      if (recipientId) {
+        console.log(recipientId);
+        navigate(`/post/${recipientId}`);
         return;
       }
       throw new Error("축약된 URL로 시도해주세요.");

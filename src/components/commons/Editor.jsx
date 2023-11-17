@@ -97,6 +97,7 @@ const Container = styled.div`
     padding: 1.6rem;
 
     display: flex;
+    flex-wrap: wrap;
     gap: 1.2rem;
 
     border-top-right-radius: 0.8rem;

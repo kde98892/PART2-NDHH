@@ -166,6 +166,7 @@ const Contents__addImg = styled.div`
   grid-area: add;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   > button:first-child {
     background-color: var(--Gray5);

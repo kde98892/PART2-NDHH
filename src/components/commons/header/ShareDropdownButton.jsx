@@ -14,7 +14,7 @@ function ShareDropdownButton({ userData }) {
   const [isToastVisible, setIsToastVisible] = useState(false);
   const { id, name, backgroundImageURL } = userData;
 
-  const host = "http://localhost:5173";
+  const host = "https://ndhh.netlify.app";
   const currentPath = `/post/${id}`;
 
   const copyClipboard = () => {

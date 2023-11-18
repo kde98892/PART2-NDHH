@@ -30,7 +30,7 @@ function Layout() {
   return (
     <Container>
       <Title message value={value.sender} setValue={setValue} />
-      <Profile value={value.error} setValue={setValue} />
+      <Profile value={value} setValue={setValue} />
       <Relationship value={value.relationship} setValue={setValue} />
       <Edit setValue={setValue} />
       <Submit value={value} />

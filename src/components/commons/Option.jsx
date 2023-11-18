@@ -153,8 +153,8 @@ function InputModal({ value, onSubmit }) {
         <p>Tab + Shift로 뒤로 돌아갈 수 있습니다.</p>
       </div>
       <InputWrapper>
-        <Input inputRef={input} pwError={value.error} placeholder="이미지 주소 붙여넣기" autoFocus />
-        {value.error ? <p>{value.error}</p> : null}
+        <Input inputRef={input} pwError={value?.error} placeholder="이미지 주소 붙여넣기" autoFocus />
+        {value.error ? <p>{value?.error}</p> : null}
       </InputWrapper>
       <Button width="100" height="l" type="primary">
         확인

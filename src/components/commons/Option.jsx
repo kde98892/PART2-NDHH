@@ -51,6 +51,7 @@ function OptionImg({ check, value, setValue, img, setImgs, setSelected, ...props
     if (file && file.size < 1024 ** 2 * 3) {
       (async function (file) {
         const URL = await getURL(file);
+        console.log(URL);
         setSelected(0);
         setImgs((prev) => [URL, ...prev]);
         setValue((prev) => ({ ...prev, URL }));
